@@ -2,7 +2,7 @@
 
 This repository is for a paper published in the Journal of Public Administration Research & Theory
 
-This repository contains all of the data and code materials necessary to replicate the project. For questions, please email jiew35@uci.edu
+This repository contains all of the data and code materials necessary to replicate the project. For questions, please email us.
 
 R version 4.2.2 (2022-10-31)
 
@@ -15,6 +15,18 @@ The directory has 5 folders with the following files:
 code/ scripts for replicating the project
 
 
-input/ datasets
+# # input/ datasets
 Attributes_all.rds: node attributes
 review_net_all.rds: agency-project relationship --> used to set up a network structure
+
+#  Authors
+Contributors names and contact info
+
+Jie Wang
+jiew35@uci.edu
+
+Nicola Ulibarri
+ulibarri@uci.edu
+
+Tyler A. Scott
+tascott@ucdavis.edu 
