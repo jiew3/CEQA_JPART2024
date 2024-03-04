@@ -16,3 +16,5 @@ code/ scripts for replicating the project
 
 
 input/ datasets
+Attributes_all.rds: node attributes
+review_net_all.rds: agency-project relationship --> used to set up a network structure
