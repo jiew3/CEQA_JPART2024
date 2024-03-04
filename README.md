@@ -15,8 +15,9 @@ The directory has 5 folders with the following files:
 code/ scripts for replicating the project
 
 
-# # input/ datasets
+input/ datasets
 Attributes_all.rds: node attributes
+
 review_net_all.rds: agency-project relationship --> used to set up a network structure
 
 #  Authors
