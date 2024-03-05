@@ -16,12 +16,12 @@ library(statnet)
 
 
 #======SECTION 1. INPUT AND FILTER DATA
-review_net_all <- readRDS("/share/crsp/lab/ulibarri/jiew35/review_net_all.rds")
+review_net_all <- readRDS("review_net_all.rds")
 dim(review_net_all)
 
 
 #======SECTION 2. INPUT ATTRIBUTES
-Attributes_all <- readRDS("/share/crsp/lab/ulibarri/jiew35/Attributes_all.rds")  
+Attributes_all <- readRDS("Attributes_all.rds")  
 dim(Attributes_all)  # 5395   15
 
 
@@ -126,7 +126,7 @@ tableA3 <- ergm(teamnet_all ~
 summary(tableA3)
 
 
-saveRDS(tableA3, "/share/crsp/lab/ulibarri/jiew35/tableA3.rds")
+saveRDS(tableA3, "tableA3.rds")
 
 
 
@@ -162,7 +162,7 @@ table4 <- ergm(teamnet_all ~
 summary(table4)
 
 
-saveRDS(table4, "/share/crsp/lab/ulibarri/jiew35/table4.rds")
+saveRDS(table4, "table4.rds")
 
 
 
@@ -199,7 +199,7 @@ tr2 <- extract(table4, include.aic = TRUE, include.bic = TRUE, include.loglik = 
 
     htmlreg(tr1,
           custom.coef.map = map, 
-          file = "/share/crsp/lab/ulibarri/jiew35/tableA3.doc",
+          file = "tableA3.doc",
           single.row = TRUE,
           stars = c(0.01, 0.05, 0.1),
           digits = 3,
@@ -210,7 +210,7 @@ tr2 <- extract(table4, include.aic = TRUE, include.bic = TRUE, include.loglik = 
 
     htmlreg(tr2,
           custom.coef.map = map, 
-          file = "/share/crsp/lab/ulibarri/jiew35/table4.doc",
+          file = "table4.doc",
           single.row = TRUE,
           stars = c(0.01, 0.05, 0.1),
           digits = 3,
@@ -223,7 +223,7 @@ tr2 <- extract(table4, include.aic = TRUE, include.bic = TRUE, include.loglik = 
 
 #GOF
       
-    pdf("/share/crsp/lab/ulibarri/jiew35/mcmc_table4.pdf")
+    pdf("mcmc_table4.pdf")
     mcmc.diagnostics(table4)
     dev.off()  
    
@@ -232,7 +232,7 @@ tr2 <- extract(table4, include.aic = TRUE, include.bic = TRUE, include.loglik = 
 
 gof_all_model <- gof(table4, GOF = ~model )
 gof_all_model
-png(filename= "/share/crsp/lab/ulibarri/jiew35/gof_model_table4.png", width=1500,height=500)
+png(filename= "gof_model_table4.png", width=1500,height=500)
 plot(gof_all_model, cex.axis=1.5, cex.lab= 2, las = 3)
 dev.off() 
 
@@ -240,12 +240,11 @@ dev.off()
 
 # #for degree2
 mod_gof_degree2 <- gof(table4,GOF=~b2degree,control = list(nsim = 1e4))
-saveRDS(mod_gof_degree2, "/share/crsp/lab/ulibarri/jiew35/mod_gof_degree2.rds")
+saveRDS(mod_gof_degree2, "mod_gof_degree2.rds")
 
 
-# mod_gof_degree2 <- readRDS("/share/crsp/lab/ulibarri/jiew35/mod_gof_degree2.rds")  
+# mod_gof_degree2 <- readRDS("mod_gof_degree2.rds")  
 
-#2
 # 0.025 and 0.975 quantiles of count at each degree value from 1k simulations
 upper_lower_95 <- apply(mod_gof_degree2$sim.b2deg,2,quantile,c(0.025,0.975))
 upper_lower_df <- data.frame(t(upper_lower_95))
@@ -253,7 +252,7 @@ names(upper_lower_df) <- c('0.025q','0.975q')
 upper_lower_df$x <- (1:nrow(upper_lower_df))-1
 
 
-png(filename= "/share/crsp/lab/ulibarri/jiew35/gof_degree2.png")
+png(filename= "gof_degree2.png")
 
 ggplot() +
   geom_errorbar(data = upper_lower_df,
@@ -274,8 +273,6 @@ guides(color = guide_legend(override.aes = list(size = 2,pch = c(NA,21)) ) )
 dev.off() 
 
         
-
-# f13 <- readRDS("/share/crsp/lab/ulibarri/jiew35/CEQA_network/result/all/f13.rds")  
 
 
 # calculate VIFs for collinearity (Table A2)
@@ -309,6 +306,6 @@ vif.ergm<-function(my.ergm){
 vif.ergm(table4)
 
 vif <- t(vif.ergm(table4))
-write.csv(as.data.frame(vif), file="/share/crsp/lab/ulibarri/jiew35/vif_table4.csv") 
+write.csv(as.data.frame(vif), file="vif_table4.csv") 
 
     
