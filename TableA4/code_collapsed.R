@@ -16,12 +16,12 @@ library(statnet)
 
 
 #======SECTION 1. INPUT AND FILTER DATA
-review_net_all <- readRDS("/share/crsp/lab/ulibarri/jiew35/collapsed/review_net_all_collapsed.rds")
+review_net_all <- readRDS("review_net_all_collapsed.rds")
 dim(review_net_all)   # 62626     2
 
 
 #======SECTION 2. INPUT ATTRIBUTES
-Attributes_all <- readRDS("/share/crsp/lab/ulibarri/jiew35/collapsed/Attributes_all_collapsed.rds")
+Attributes_all <- readRDS("Attributes_all_collapsed.rds")
 dim(Attributes_all)   #5368   13
 
 
@@ -130,12 +130,12 @@ tableA4 <- ergm(teamnet_all ~
            edges   
            
     , control = control.ergm(seed = 123, MCMLE.maxit = 200, MCMC.burnin=1000000000))
-    write.csv(as.data.frame(coefficients(summary(tableA4))), file="/share/crsp/lab/ulibarri/jiew35/collapsed/tableA4.csv") 
+    write.csv(as.data.frame(coefficients(summary(tableA4))), file="tableA4.csv") 
 
 summary(tableA4)
 
 
-saveRDS(tableA4, "/share/crsp/lab/ulibarri/jiew35/collapsed/tableA4.rds")
+saveRDS(tableA4, "tableA4.rds")
 
 
 #output
@@ -187,7 +187,7 @@ tr2 <- extract(tableA4, include.aic = TRUE, include.bic = TRUE, include.loglik =
 
     htmlreg(tr2,
           custom.coef.map = map, 
-          file = "/share/crsp/lab/ulibarri/jiew35/collapsed/tableA4.doc",
+          file = "tableA4.doc",
           single.row = TRUE,
           stars = c(0.01, 0.05, 0.1),
           digits = 3,
@@ -200,14 +200,14 @@ tr2 <- extract(tableA4, include.aic = TRUE, include.bic = TRUE, include.loglik =
 
 #GOF
       
-    pdf("/share/crsp/lab/ulibarri/jiew35/collapsed/cmc_tableA4.pdf")
+    pdf("cmc_tableA4.pdf")
     mcmc.diagnostics(net)
     dev.off()  
    
 
 gof_all_model <- gof(tableA4, GOF = ~model )
 gof_all_model
-png(filename= "/share/crsp/lab/ulibarri/jiew35/collapsed/gof_TableA4.png", width=1500,height=500)
+png(filename= "gof_TableA4.png", width=1500,height=500)
 plot(gof_all_model, cex.axis=1.5, cex.lab= 2, las = 3)
 dev.off() 
 
