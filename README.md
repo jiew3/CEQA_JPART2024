@@ -14,6 +14,7 @@ The directory has 4 folders with the following files:
 
 code/ scripts for replicating the main manuscript
 
+- code.R
 
 input/ datasets for the main manuscript
 
@@ -23,12 +24,12 @@ input/ datasets for the main manuscript
 
 Figures/
 
-Figures included in the paper
+- Figures included in the paper
 
 
 TableA4/ 
 
-datasets and code used for producing Table A4: Analysis of the CEQA Review Network with Regional Agencies Collapsed into a Single Large Agency
+- datasets and code used for producing Table A4: Analysis of the CEQA Review Network with Regional Agencies Collapsed into a Single Large Agency
 
 #  Authors
 Contributors names and contact info
