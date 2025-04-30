@@ -38,8 +38,4 @@ Contributors names and contact info
 Jie Wang
 jiew35@uci.edu
 
-Nicola Ulibarri
-ulibarri@uci.edu
 
-Tyler A. Scott
-tascott@ucdavis.edu 
