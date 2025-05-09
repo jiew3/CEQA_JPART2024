@@ -277,10 +277,10 @@ dev.off()
 
 # calculate VIFs for collinearity (Table A2)
 
-vif.ergm<-function(my.ergm){
+vif.ergm<-function(my.ergm, edges.posi){
 
   cor.mat<-stats::cov2cor(my.ergm$covar) #calculate correlation matrix
-  corr5<-cor.mat[-c(1),-c(1)] ##omit edges term
+  corr5<-cor.mat[-c(edges.posi),-c(edges.posi)] ##omit edges term; edges.posi is 23 in this research 
 
   corr5<-corr5[!is.na(corr5[1:nrow(corr5)]),]
   corr5<-corr5[,which(!is.na(corr5[1,1:ncol(corr5)]))]
@@ -296,16 +296,16 @@ vif.ergm<-function(my.ergm){
     VIFS[1,i]<-1/(1-Rsq)
   }
 
-    colnames(VIFS)<-names(my.ergm$coef[-c(23)])
+    colnames(VIFS)<-names(my.ergm$coef[-c(edges.posi)])
  message("Higher values indicate greater correlation.\nVIF > 20 is concerning, VIF > 100 indicates severe collinearity.")
   VIFS
 }
 
+## Many thanks to Dr. Santiago Quintero Suarez for identifying and correcting a coding error about the position of the edges term in my original analysis. 
 
+vif.ergm(table4, 23)
 
-vif.ergm(table4)
-
-vif <- t(vif.ergm(table4))
+vif <- t(vif.ergm(table4, 23))
 write.csv(as.data.frame(vif), file="vif_table4.csv") 
 
     
