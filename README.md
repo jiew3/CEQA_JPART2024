@@ -24,7 +24,7 @@ input/ datasets for the main manuscript
 
 Figures/
 
-- Figures included in the paper
+- Figures and Table A2 included in the paper
 
 
 TableA4/ 
@@ -33,9 +33,13 @@ TableA4/
 - same code, with changes in datasets
 
 #  Authors
-Contributors names and contact info
+Contact info
 
 Jie Wang
 jiew35@uci.edu
+
+------[Updated by Jie Wang on 05/08/2025]
+Many thanks to Dr. Santiago Quintero Suarez for identifying and correcting a coding error in my original analysis for testing multicollinearity. The code and results have been revised accordingly. You can find the revised Table A2 under the Figures folder. Based on revised VIF analysis, this research also did not find evidence of multicollinearity in the ERGM model, and the potential risk of multicollinearity becomes even lower.
+
 
 
