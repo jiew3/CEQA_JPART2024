@@ -301,7 +301,7 @@ vif.ergm<-function(my.ergm, edges.posi){
   VIFS
 }
 
-## Many thanks to Dr. Santiago Quintero Suarez for identifying and correcting a coding error 
+## updated on 05/08/2025: Many thanks to Dr. Santiago Quintero Suarez for identifying and correcting a coding error 
 ## about the position of the edges term in my original analysis
 
 vif.ergm(table4, 23)
